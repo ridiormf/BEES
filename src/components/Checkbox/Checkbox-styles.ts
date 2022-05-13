@@ -8,6 +8,7 @@ const Label = theme.styled('label', {
   color: '$primaryText',
   display: 'flex',
   alignItems: 'center',
+  cursor: 'pointer',
 });
 
 const Input = theme.styled('input', {

@@ -1,5 +1,5 @@
 import { CSS } from '@stitches/react';
-import theme from '../../theme';
+import theme from '../../../theme';
 
 const Container = theme.styled('div', {
   alignSelf: 'stretch',
@@ -11,7 +11,7 @@ const Container = theme.styled('div', {
   paddingHorizontal: 20,
 });
 
-const FormContainer = theme.styled('div', {
+const FormContainer = theme.styled('form', {
   width: 300,
   display: 'flex',
   alignItems: 'start',
@@ -22,6 +22,7 @@ const FormContainer = theme.styled('div', {
 const textFieldCSS: CSS = {
   marginTop: 6,
   marginBottom: 16,
+  textTransform: 'capitalize',
 };
 
 const checkboxCSS: CSS = {
