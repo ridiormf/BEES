@@ -1,4 +1,5 @@
 import React from 'react';
+import { FeedbackChild } from '../../components/Feedback/Feedback-types';
 
 export interface User {
   fullName: string;
@@ -7,6 +8,7 @@ export interface User {
 
 export interface ApplicationState {
   showFullLoading: boolean;
+  feedbackChildList: Array<FeedbackChild>;
 }
 
 export interface ApplicationContext {
@@ -15,6 +17,7 @@ export interface ApplicationContext {
   clearUser?: () => void;
   openFullLoading?: () => void;
   closeFullLoading?: () => void;
+  showNewFeedback?: (child: FeedbackChild) => void;
 }
 
 export interface ApplicationProviderControl {

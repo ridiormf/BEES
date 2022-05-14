@@ -1,4 +1,5 @@
 import React from 'react';
+import Feedback from '../../components/Feedback';
 import FullLoading from '../../components/FullLoading/FullLoading';
 import {
   applicationContext,
@@ -16,13 +17,16 @@ const ApplicationProvider: React.FC<ApplicationProviderProps> = ({
   children,
 }) => {
   const {
-    state: { showFullLoading },
+    state: { showFullLoading, feedbackChildList },
     context,
   } = useApplicationProviderControl();
+
+  console.log({ feedbackChildList });
   return (
     <applicationContext.Provider value={context}>
       <RenderChildrenWithMemo>{children}</RenderChildrenWithMemo>
       <FullLoading visible={showFullLoading} />
+      <Feedback childList={feedbackChildList} />
     </applicationContext.Provider>
   );
 };

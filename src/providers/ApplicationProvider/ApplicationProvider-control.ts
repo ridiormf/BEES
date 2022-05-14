@@ -1,5 +1,6 @@
 import React from 'react';
-import { useConstructor } from '../../utils/hooks';
+import { FeedbackChild } from '../../components/Feedback/Feedback-types';
+import { useConstructor, useDidUpdate } from '../../utils/hooks';
 import { APPLICATION_PROVIDER } from './ApplicationProvider-consts';
 import {
   ApplicationContext,
@@ -22,6 +23,13 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
 
   const [user, setUser] = React.useState<User | undefined>(storageUser as User);
   const [showFullLoading, setShowFullLoading] = React.useState<boolean>(!!user);
+  const [feedbackChildList, setFeedbackChildList] = React.useState<
+    Array<FeedbackChild & { id: number }>
+  >([]);
+
+  const getCurrentFeedbackList = () => {
+    return feedbackChildList;
+  };
 
   const saveUser = (userToSave: User) => {
     localStorage.setItem(
@@ -44,9 +52,34 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
     setShowFullLoading(false);
   };
 
+  const showNewFeedback = (child: FeedbackChild) => {
+    console.log('entrou aqui muito');
+    const childId = new Date().valueOf();
+    const newChild = { ...child, id: childId } as FeedbackChild & {
+      id: number;
+    };
+    const newFeedbackList = getCurrentFeedbackList();
+    newFeedbackList.push(newChild);
+    setFeedbackChildList(newFeedbackList);
+
+    setTimeout(() => {
+      const newList = getCurrentFeedbackList().map((item) =>
+        item.id === newChild.id ? { ...item, closing: true } : item,
+      );
+      setFeedbackChildList(newList);
+      setTimeout(() => {
+        const newList = getCurrentFeedbackList().filter(
+          (item) => item.id !== newChild.id,
+        );
+        setFeedbackChildList(newList);
+      }, 500);
+    }, 8000);
+  };
+
   return {
     state: {
       showFullLoading,
+      feedbackChildList,
     },
     context: {
       user,
@@ -54,6 +87,7 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
       clearUser,
       openFullLoading,
       closeFullLoading,
+      showNewFeedback,
     },
   };
 };

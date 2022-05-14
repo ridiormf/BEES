@@ -8,6 +8,7 @@ import Image from '../Image';
 
 import BeesImage from '../../assets/png/bees.png';
 import { useFullLoadingControl } from './FullLoading-control';
+import { getBody } from '../../utils/dom';
 
 const {
   styled: { Container },
@@ -22,7 +23,7 @@ const FullLoading: React.FC<FullLoadingProps> = ({ visible }) => {
     <Container css={containerCSS!} className={containerClassName}>
       <Image src={BeesImage} css={css.image} />
     </Container>,
-    document.getElementById('root')!,
+    getBody(),
   );
 };
 

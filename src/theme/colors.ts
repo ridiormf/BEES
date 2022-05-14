@@ -10,6 +10,15 @@ const colors = {
   secondaryCard: '#FFFFFF',
   secondaryTitle: '#27272A',
   secondaryText: '#3F3F46',
+
+  errorBackground: '#F5C4C4',
+  errorText: '#8A0202',
+
+  successBackground: '#AAF8AA',
+  successText: '#004B00',
+
+  warningBackground: '#F8EAB1',
+  warningText: '#6D5900',
 };
 
 export default colors;
