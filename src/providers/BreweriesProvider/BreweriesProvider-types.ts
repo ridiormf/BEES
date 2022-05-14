@@ -1,4 +1,5 @@
 import React from 'react';
+import { SuspenseResponse } from '../../api';
 
 export interface Brewery {
   id: number;
@@ -21,8 +22,9 @@ export interface Brewery {
 }
 
 export interface BreweriesContext {
-  breweries?: Array<Brewery>;
+  breweriesResources?: SuspenseResponse<Array<Brewery>>;
   getBreweries?: () => Promise<void>;
+  clearBreweries?: () => void;
 }
 
 export interface BreweriesProviderControl {

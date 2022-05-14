@@ -2,13 +2,22 @@ import { keyframes } from '@stitches/react';
 import theme from '../../theme';
 
 const Container = theme.styled('div', {
-  width: '100vw',
-  height: '100vh',
-  backgroundColor: '$primaryBackground',
+  alignSelf: 'stretch',
+  flexGrow: 1,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   color: '$',
+  variants: {
+    color: {
+      primary: {
+        backgroundColor: '$primaryBackground',
+      },
+      secondary: {
+        backgroundColor: '$secondaryBackground',
+      },
+    },
+  },
 });
 
 const opacityAnimation = keyframes({

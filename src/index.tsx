@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { ApplicationProvider } from './providers/ApplicationProvider';
+import { BreweriesProvider } from './providers/BreweriesProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -11,9 +12,11 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
   <ApplicationProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <BreweriesProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </BreweriesProvider>
   </ApplicationProvider>,
   // </React.StrictMode>,
 );

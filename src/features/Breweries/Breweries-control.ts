@@ -1,16 +1,23 @@
+import React from 'react';
+import { useApplicationContext } from '../../providers/ApplicationProvider';
 import { useBreweriesContext } from '../../providers/BreweriesProvider';
-import { useConstructor } from '../../utils/hooks';
+import { useDidMount } from '../../utils/hooks';
 
 export const useBreweriesControl = () => {
-  const { getBreweries, breweries } = useBreweriesContext();
+  const { closeFullLoading } = useApplicationContext();
+  const { breweriesResources } = useBreweriesContext();
 
-  useConstructor(() => {
-    getBreweries!();
-  });
+  const breweriesResponse = breweriesResources?.read();
+
+  React.useEffect(() => {
+    if (breweriesResponse) {
+      closeFullLoading!();
+    }
+  }, [breweriesResponse]);
 
   return {
     state: {
-      breweries,
+      breweries: breweriesResponse?.data,
     },
   };
 };

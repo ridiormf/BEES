@@ -46,6 +46,7 @@ const ContentContainer = theme.styled('div', {
   padding: 60,
   display: 'flex',
   flexDirection: 'column',
+  flexGrow: 1,
 });
 
 export const pageTemplateStyles = {

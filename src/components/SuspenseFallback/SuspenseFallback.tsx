@@ -1,11 +1,15 @@
+import React from 'react';
 import { suspenseFallbackStyles } from './SuspenseFallback-styles';
+import { SuspenseFallbackProps } from './SuspenseFallback-types';
 const {
   styled: { Container, LoadingText },
 } = suspenseFallbackStyles;
 
-const SuspenseFallback = () => {
+const SuspenseFallback: React.FC<SuspenseFallbackProps> = ({
+  color = 'primary',
+}) => {
   return (
-    <Container>
+    <Container color={color}>
       <LoadingText>Carregando...</LoadingText>
     </Container>
   );

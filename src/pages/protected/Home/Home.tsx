@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PageTemplate from '../../../components/PageTemplate/PageTemplate';
-import Breweries from '../../../features/Breweries';
+import SuspenseFallback from '../../../components/SuspenseFallback';
 
 import { useHomeControl } from './Home-control';
 import { HomeProps } from './Home-types';
+
+const Breweries = React.lazy(() => import('../../../features/Breweries'));
 
 const Home: React.FC<HomeProps> = () => {
   useHomeControl();
   return (
     <PageTemplate>
-      <Breweries />
+      <Suspense fallback={<SuspenseFallback color="secondary" />}>
+        <Breweries />
+      </Suspense>
     </PageTemplate>
   );
 };

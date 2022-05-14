@@ -8,7 +8,7 @@ export const useLandingControl = () => {
 
   const [validForm, setValidForm] = React.useState<boolean>(false);
 
-  const applicationContext = useApplicationContext();
+  const { saveUser, openFullLoading } = useApplicationContext();
 
   const onChangeFullName = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -32,11 +32,13 @@ export const useLandingControl = () => {
 
   const onSaveForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    applicationContext.openFullLoading!();
-    applicationContext.saveUser!({
-      fullName: fullName.trim(),
-      majority,
-    });
+    openFullLoading!();
+    setTimeout(() => {
+      saveUser!({
+        fullName: fullName.trim(),
+        majority,
+      });
+    }, 500);
   };
 
   return {

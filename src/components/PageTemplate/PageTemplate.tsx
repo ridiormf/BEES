@@ -4,7 +4,7 @@ import { usePageTemplateControl } from './PageTemplate-control';
 import { pageTemplateStyles } from './PageTemplate-styles';
 import { PageTemplateProps } from './PageTemplate-types';
 
-import backButtonSvg from '../../assets/svg/back.svg';
+import backButtonSvg from '../../assets/svg/arrow-circle-left.svg';
 import Image from '../Image';
 
 const {

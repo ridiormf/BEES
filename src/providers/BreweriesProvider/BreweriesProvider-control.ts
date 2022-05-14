@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBreweriesList } from '../../api';
+import { getBreweriesList, SuspenseResponse } from '../../api';
 import {
   BreweriesContext,
   BreweriesProviderControl,
@@ -9,19 +9,23 @@ import {
 export const breweriesContext = React.createContext<BreweriesContext>({});
 
 export const useBreweriesProviderControl = (): BreweriesProviderControl => {
-  const [breweries, setBreweries] = React.useState<Array<Brewery>>();
+  const [breweriesResources, setBreweriesResources] = React.useState<
+    SuspenseResponse<Array<Brewery>> | undefined
+  >();
 
   const getBreweries = async (): Promise<void> => {
-    const { ok, data } = await getBreweriesList();
-    if (ok) {
-      setBreweries(data);
-    }
+    setBreweriesResources(getBreweriesList());
+  };
+
+  const clearBreweries = async (): Promise<void> => {
+    setBreweriesResources(undefined);
   };
 
   return {
     context: {
-      breweries,
+      breweriesResources,
       getBreweries,
+      clearBreweries,
     },
   };
 };
