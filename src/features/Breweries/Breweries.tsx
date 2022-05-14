@@ -6,21 +6,24 @@ import chartSvg from '../../assets/svg/chart-square-bar.svg';
 import pinSvg from '../../assets/svg/location-marker.svg';
 import phoneSvg from '../../assets/svg/phone.svg';
 import { BulletProps } from '../../components/Bullet/Bullet-types';
+import { CardBulletProps } from '../../components/CardList/CardList-types';
 
 const CardList = React.lazy(() => import('../../components/CardList'));
 
 const Breweries = () => {
   const {
     state: { breweries },
+    methods: { onSaveNewBullet },
   } = useBreweriesControl();
 
   return (
     <CardList
       bulletsWithAddMore
+      onSaveNewBullet={onSaveNewBullet}
       data={
         breweries
           ? breweries.map((brewery): DataItem => {
-              const bullets: Array<BulletProps> = [];
+              const bullets: Array<CardBulletProps> = [];
               if (brewery.brewery_type) {
                 bullets.push({
                   icon: chartSvg,
@@ -38,6 +41,13 @@ const Breweries = () => {
                   icon: phoneSvg,
                   children: brewery.phone,
                 });
+              }
+              if (brewery.customBullets) {
+                bullets.push(
+                  ...brewery.customBullets.map((value) => ({
+                    children: value,
+                  })),
+                );
               }
               return {
                 key: brewery.id,

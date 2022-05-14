@@ -13,16 +13,29 @@ export const useBreweriesProviderControl = (): BreweriesProviderControl => {
     SuspenseResponse<Array<Brewery>> | undefined
   >();
 
+  const [breweries, setBreweries] = React.useState<Array<Brewery>>();
+
+  const setOrUpdateBreweries = (breweryList: Array<Brewery>) => {
+    setBreweries(breweryList);
+  };
+  // const _breweries = breweriesResources?.read().data;
+  // if (_breweries?.length && _breweries !== breweries) {
+  //   setBreweries(_breweries);
+  // }
+
   const getBreweries = async (): Promise<void> => {
     setBreweriesResources(getBreweriesList());
   };
 
   const clearBreweries = async (): Promise<void> => {
+    setBreweries(undefined);
     setBreweriesResources(undefined);
   };
 
   return {
     context: {
+      breweries,
+      setOrUpdateBreweries,
       breweriesResources,
       getBreweries,
       clearBreweries,

@@ -5,7 +5,8 @@ const {
   styled: { Bullet },
 } = bulletStyles;
 
-export interface BulletProps extends React.ComponentProps<typeof Bullet> {
-  children: string;
-  icon: string;
+export interface BulletProps
+  extends Omit<React.ComponentProps<typeof Bullet>, 'onChange'> {
+  children: React.ReactNode;
+  icon?: string;
 }

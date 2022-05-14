@@ -15,7 +15,7 @@ const Bullet: React.FC<BulletProps> = ({
   ...rest
 }) => {
   return (
-    <StyledBullet {...rest} disabled={!onClick}>
+    <StyledBullet {...rest} onClick={onClick} disabled={!onClick}>
       <Image src={icon} />
       <Text>{children}</Text>
     </StyledBullet>

@@ -19,12 +19,15 @@ export interface Brewery {
   website_url: string;
   updated_at: string;
   created_at: string;
+  customBullets?: Array<string>;
 }
 
 export interface BreweriesContext {
+  breweries?: Array<Brewery>;
   breweriesResources?: SuspenseResponse<Array<Brewery>>;
   getBreweries?: () => Promise<void>;
   clearBreweries?: () => void;
+  setOrUpdateBreweries?: (breweries: Array<Brewery>) => void;
 }
 
 export interface BreweriesProviderControl {

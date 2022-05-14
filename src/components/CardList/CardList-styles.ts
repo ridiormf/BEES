@@ -1,6 +1,7 @@
 import { CSS } from '@stitches/react';
 import theme from '../../theme';
 import ComponentText from '../Text';
+import ComponentInput from '../Input';
 
 const CardsContainer = theme.styled('div', {
   display: 'grid',
@@ -109,6 +110,12 @@ const Bullet = theme.styled('button', {
   },
 });
 
+const Input = theme.styled(ComponentInput, {
+  padding: 4,
+  width: 100,
+  height: 'unset',
+});
+
 const TextEmptyCSS: CSS = {
   opacity: 0.5,
   fontStyle: 'italic',
@@ -124,6 +131,7 @@ export const cardListStyles = {
     Text,
     BulletsContainer,
     Bullet,
+    Input,
   },
   css: {
     TextEmpty: TextEmptyCSS,

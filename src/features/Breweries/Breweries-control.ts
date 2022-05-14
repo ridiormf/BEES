@@ -1,13 +1,35 @@
 import React from 'react';
 import { useApplicationContext } from '../../providers/ApplicationProvider';
 import { useBreweriesContext } from '../../providers/BreweriesProvider';
-import { useDidMount } from '../../utils/hooks';
 
 export const useBreweriesControl = () => {
   const { closeFullLoading } = useApplicationContext();
-  const { breweriesResources } = useBreweriesContext();
+  const { breweriesResources, breweries, setOrUpdateBreweries } =
+    useBreweriesContext();
 
   const breweriesResponse = breweriesResources?.read();
+
+  React.useEffect(() => {
+    if (breweriesResponse?.data && !breweries) {
+      setOrUpdateBreweries!(breweriesResponse?.data);
+    }
+  }, [breweriesResponse?.data, breweries]);
+
+  const onSaveNewBullet = (cardId: string, value: string) => {
+    const brewery = breweries?.find((item) => `${item.id}` === cardId);
+    if (brewery && value) {
+      if (!brewery.customBullets) {
+        brewery.customBullets = [];
+      }
+      brewery.customBullets.push(value);
+      const newBreweries = breweries?.map((item) =>
+        item.id === brewery.id ? brewery : item,
+      );
+      setOrUpdateBreweries!(newBreweries!);
+    }
+  };
+
+  console.log({ breweries });
 
   React.useEffect(() => {
     if (breweriesResponse) {
@@ -17,7 +39,10 @@ export const useBreweriesControl = () => {
 
   return {
     state: {
-      breweries: breweriesResponse?.data,
+      breweries,
+    },
+    methods: {
+      onSaveNewBullet,
     },
   };
 };
