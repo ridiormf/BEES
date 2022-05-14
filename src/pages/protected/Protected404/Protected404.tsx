@@ -8,7 +8,6 @@ import Text from '../../../components/Text';
 import Image from '../../../components/Image';
 
 import BeesImage from '../../../assets/png/bees.png';
-import backButtonSvg from '../../../assets/svg/arrow-circle-left.svg';
 import PageTemplate from '../../../components/PageTemplate/PageTemplate';
 
 const {
@@ -17,9 +16,7 @@ const {
 } = protected404Styles;
 
 const Protected404: React.FC<Protected404Props> = () => {
-  const {
-    methods: { onGoBack },
-  } = useProtected404Control();
+  useProtected404Control();
   return (
     <PageTemplate
       css={{

@@ -1,13 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useApplicationContext } from '../../../providers/ApplicationProvider';
-import { checkFullName } from '../../../utils/validations';
+import { useAppNavigation } from '../../../utils/hooks';
 
 export const usePublic404Control = () => {
-  const navigate = useNavigate();
+  const { goBack } = useAppNavigation();
 
   const onGoBack = () => {
-    navigate(-1);
+    goBack();
   };
 
   return {
