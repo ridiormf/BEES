@@ -1,18 +1,27 @@
 import React from 'react';
 import { CardListDataItem } from '../../components/CardList';
 import { useBreweriesControl } from './Breweries-control';
+import { breweriesStyles } from './Breweries-styles';
+
+import { CardListBulletProps } from '../../components/CardList/CardList-types';
 
 import chartSvg from '../../assets/svg/chart-square-bar.svg';
 import pinSvg from '../../assets/svg/location-marker.svg';
 import phoneSvg from '../../assets/svg/phone.svg';
-import { CardListBulletProps } from '../../components/CardList/CardList-types';
+import beesLogo from '../../assets/png/bees.png';
+import Image from '../../components/Image';
 
 const CardList = React.lazy(() => import('../../components/CardList'));
+
+const {
+  styled: { ErrorContainer, ErrorTitle, ImageButton },
+  css,
+} = breweriesStyles;
 
 const Breweries = () => {
   const {
     state: { breweries },
-    methods: { onSaveNewBullet, onDeleteBrewery },
+    methods: { onSaveNewBullet, onDeleteBrewery, tryQueryAgain },
   } = useBreweriesControl();
 
   return breweries?.map ? (
@@ -61,7 +70,15 @@ const Breweries = () => {
         };
       })}
     />
-  ) : null;
+  ) : (
+    <ErrorContainer>
+      <ErrorTitle>No brewery to show</ErrorTitle>
+      <ImageButton onClick={tryQueryAgain}>
+        <Image src={beesLogo} css={css.image} />
+      </ImageButton>
+      <ErrorTitle>Tap the BEE to query again.</ErrorTitle>
+    </ErrorContainer>
+  );
 };
 
 export default Breweries;

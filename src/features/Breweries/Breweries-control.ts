@@ -4,7 +4,7 @@ import { useBreweriesContext } from '../../providers/BreweriesProvider';
 
 export const useBreweriesControl = () => {
   const { closeFullLoading, showNewFeedback } = useApplicationContext();
-  const { breweriesResources, breweries, setOrUpdateBreweries } =
+  const { breweriesResources, breweries, setOrUpdateBreweries, getBreweries } =
     useBreweriesContext();
 
   const breweriesResponse = breweriesResources?.read();
@@ -49,6 +49,10 @@ export const useBreweriesControl = () => {
     }
   }, [breweriesResponse]);
 
+  const tryQueryAgain = () => {
+    getBreweries!();
+  };
+
   return {
     state: {
       breweries,
@@ -56,6 +60,7 @@ export const useBreweriesControl = () => {
     methods: {
       onSaveNewBullet,
       onDeleteBrewery,
+      tryQueryAgain,
     },
   };
 };
