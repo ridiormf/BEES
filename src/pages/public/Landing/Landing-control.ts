@@ -36,7 +36,7 @@ export const useLandingControl = () => {
     openFullLoading!();
 
     showNewFeedback!({
-      message: 'Login realizado com sucesso!',
+      message: 'Login successfully!',
       kind: 'success',
     });
     setTimeout(() => {

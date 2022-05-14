@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
@@ -10,13 +9,11 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
-  <React.StrictMode>
-    <ApplicationProvider>
-      <BreweriesProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </BreweriesProvider>
-    </ApplicationProvider>
-  </React.StrictMode>,
+  <ApplicationProvider>
+    <BreweriesProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </BreweriesProvider>
+  </ApplicationProvider>,
 );

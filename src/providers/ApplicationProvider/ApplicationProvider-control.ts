@@ -52,8 +52,7 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
     setShowFullLoading(false);
   };
 
-  const showNewFeedback = (child: FeedbackChild) => {
-    console.log('entrou aqui muito');
+  const showNewFeedback = (child: Omit<FeedbackChild, 'id'>) => {
     const childId = new Date().valueOf();
     const newChild = { ...child, id: childId } as FeedbackChild & {
       id: number;
@@ -63,17 +62,19 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
     setFeedbackChildList(newFeedbackList);
 
     setTimeout(() => {
-      const newList = getCurrentFeedbackList().map((item) =>
-        item.id === newChild.id ? { ...item, closing: true } : item,
-      );
-      setFeedbackChildList(newList);
-      setTimeout(() => {
-        const newList = getCurrentFeedbackList().filter(
-          (item) => item.id !== newChild.id,
+      setFeedbackChildList((currentList) => {
+        const newList = currentList.map((item) =>
+          item.id === newChild.id ? { ...item, closing: true } : item,
         );
-        setFeedbackChildList(newList);
+        return newList;
+      });
+      setTimeout(() => {
+        setFeedbackChildList((currentList) => {
+          const newList = currentList.filter((item) => item.id !== newChild.id);
+          return newList;
+        });
       }, 500);
-    }, 8000);
+    }, 7500);
   };
 
   return {

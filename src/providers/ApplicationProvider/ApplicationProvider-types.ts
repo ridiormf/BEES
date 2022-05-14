@@ -17,7 +17,7 @@ export interface ApplicationContext {
   clearUser?: () => void;
   openFullLoading?: () => void;
   closeFullLoading?: () => void;
-  showNewFeedback?: (child: FeedbackChild) => void;
+  showNewFeedback?: (child: Omit<FeedbackChild, 'id'>) => void;
 }
 
 export interface ApplicationProviderControl {

@@ -15,26 +15,27 @@ const Container = theme.styled('div', {
   justifyContent: 'flex-start',
   flexDirection: 'column',
   overflow: 'hidden',
+  pointerEvents: 'none',
 });
 
 const onShowFeedback = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-50px)' },
-  '100%': { opacity: 1, transform: 'translateY(0px)' },
+  '0%': { opacity: 0, marginTop: -20, maxHeight: 0 },
+  '100%': { opacity: 1, marginTop: 20, maxHeight: 100 },
 });
 
 const onHideFeedback = keyframes({
-  '0%': { opacity: 1, transform: 'translateY(0px)' },
-  '100%': { opacity: 0, transform: 'translateY(-50px)' },
+  '0%': { opacity: 1, marginTop: 20, maxHeight: 100 },
+  '100%': { opacity: 0, marginTop: -20, maxHeight: 0 },
 });
 
 const FeedbackItem = theme.styled('div', {
   width: 600,
-  marginTop: 20,
   paddingHorizontal: 16,
   paddingVertical: 8,
   borderRadius: '$borderRadius',
   animation: `${onShowFeedback} 500ms forwards`,
   border: '1px solid',
+  overflow: 'hidden',
   variants: {
     kind: {
       success: {

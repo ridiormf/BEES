@@ -24,6 +24,7 @@ export const useBreweriesProviderControl = (): BreweriesProviderControl => {
   // }
 
   const getBreweries = async (): Promise<void> => {
+    console.log('entrou aqui');
     setBreweriesResources(getBreweriesList());
   };
 

@@ -15,6 +15,7 @@ const Feedback: React.FC<FeedbackProps> = ({ childList }) => {
     <Container>
       {childList.map((child) => (
         <FeedbackItem
+          key={child.id}
           kind={child.kind}
           className={child.closing ? 'will-hide' : ''}
         >

@@ -21,7 +21,6 @@ const ApplicationProvider: React.FC<ApplicationProviderProps> = ({
     context,
   } = useApplicationProviderControl();
 
-  console.log({ feedbackChildList });
   return (
     <applicationContext.Provider value={context}>
       <RenderChildrenWithMemo>{children}</RenderChildrenWithMemo>

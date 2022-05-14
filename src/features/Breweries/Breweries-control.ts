@@ -1,11 +1,9 @@
 import React from 'react';
-import { CardListDataItem } from '../../components/CardList/CardList-types';
 import { useApplicationContext } from '../../providers/ApplicationProvider';
 import { useBreweriesContext } from '../../providers/BreweriesProvider';
-import { Brewery } from '../../providers/BreweriesProvider/BreweriesProvider-types';
 
 export const useBreweriesControl = () => {
-  const { closeFullLoading } = useApplicationContext();
+  const { closeFullLoading, showNewFeedback } = useApplicationContext();
   const { breweriesResources, breweries, setOrUpdateBreweries } =
     useBreweriesContext();
 
@@ -33,8 +31,6 @@ export const useBreweriesControl = () => {
 
   const onDeleteBrewery = (cardId: string | number) => {
     const newBreweries = breweries?.filter((item) => {
-      console.log(item.id, cardId);
-
       return item.id !== cardId;
     });
 
@@ -44,6 +40,12 @@ export const useBreweriesControl = () => {
   React.useEffect(() => {
     if (breweriesResponse) {
       closeFullLoading!();
+      if (!breweriesResponse.ok) {
+        showNewFeedback!({
+          kind: 'error',
+          message: 'something went wrong when trying to query the breweries.',
+        });
+      }
     }
   }, [breweriesResponse]);
 
