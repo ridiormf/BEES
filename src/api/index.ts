@@ -7,7 +7,7 @@ export interface SuspenseResponse<DataType> {
 
 const api = create({
   baseURL: 'https://api.openbrewerydb.org',
-  timeout: 10000,
+  timeout: 10000, // 10 seconds
 });
 
 const wrapPromise = <DataType>(
@@ -17,13 +17,8 @@ const wrapPromise = <DataType>(
   let result: ApiResponse<DataType>;
   let suspender = promise.then(
     (res) => {
-      if (res.ok) {
-        status = 'success';
-        result = res;
-      } else {
-        status = 'api_error';
-        result = res;
-      }
+      status = 'success';
+      result = res;
     },
     (err) => {
       status = 'error';
@@ -34,8 +29,6 @@ const wrapPromise = <DataType>(
   return {
     read: () => {
       if (status === 'success') {
-        return result;
-      } else if (status === 'api_error') {
         return result;
       } else if (status === 'error') {
         throw result;
@@ -48,6 +41,7 @@ const wrapPromise = <DataType>(
 const apiCallWithTimer = async <DataType>(
   promise: Promise<ApiResponse<DataType>>,
 ) => {
+  // Only for tests purposes, remove to see correct application functionality.
   await new Promise((res) => setTimeout(res, 2000));
   return promise;
 };
