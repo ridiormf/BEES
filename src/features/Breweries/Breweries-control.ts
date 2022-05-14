@@ -29,8 +29,6 @@ export const useBreweriesControl = () => {
     }
   };
 
-  console.log({ breweries });
-
   React.useEffect(() => {
     if (breweriesResponse) {
       closeFullLoading!();

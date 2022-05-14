@@ -32,7 +32,6 @@ const CardList: React.FC<CardListProps> = ({
     methods: { openBulletField, saveNewBullet, onChangeField, onFieldKeyUp },
   } = useCardListControl({ onSaveNewBullet });
 
-  console.log('entrou aqui');
   return (
     <CardsContainer>
       {data.map((item: DataItem) => (
