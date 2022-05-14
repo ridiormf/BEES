@@ -1,16 +1,33 @@
 import React from 'react';
-import { ApplicationProviderControl, User } from './ApplicationProvider-types';
+import { useConstructor } from '../utils/hooks';
+import { APPLICATION_PROVIDER } from './ApplicationProvider-consts';
+import {
+  ApplicationContext,
+  ApplicationProviderControl,
+  User,
+} from './ApplicationProvider-types';
 
-export const ApplicationContext =
-  React.createContext<ApplicationProviderControl>({
-    state: {},
-    methods: {},
-  });
+export const applicationContext = React.createContext<ApplicationContext>({});
 
 export const useApplicationProviderControl = (): ApplicationProviderControl => {
-  const [user, setUser] = React.useState<User>();
+  const storageUser = useConstructor(() => {
+    const jsonUser = localStorage.getItem(
+      APPLICATION_PROVIDER.STORAGE_KEYS.USER,
+    );
+    if (jsonUser) {
+      return JSON.parse(jsonUser);
+    }
+    return undefined;
+  });
+
+  const [user, setUser] = React.useState<User | undefined>(storageUser as User);
+  const [showFullLoading, setShowFullLoading] = React.useState<boolean>(!!user);
 
   const saveUser = (userToSave: User) => {
+    localStorage.setItem(
+      APPLICATION_PROVIDER.STORAGE_KEYS.USER,
+      JSON.stringify(userToSave),
+    );
     setUser(userToSave);
   };
 
@@ -18,18 +35,29 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
     setUser(undefined);
   };
 
+  const openFullLoading = () => {
+    setShowFullLoading(true);
+  };
+
+  const closeFullLoading = () => {
+    setShowFullLoading(false);
+  };
+
   return {
     state: {
-      user,
+      showFullLoading,
     },
-    methods: {
+    context: {
+      user,
       saveUser,
       clearUser,
+      openFullLoading,
+      closeFullLoading,
     },
   };
 };
 
-export const useApplicationContext = (): ApplicationProviderControl => {
-  const applicationContext = React.useContext(ApplicationContext);
-  return applicationContext;
+export const useApplicationContext = (): ApplicationContext => {
+  const context = React.useContext(applicationContext);
+  return context;
 };

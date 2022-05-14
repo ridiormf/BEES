@@ -20,6 +20,13 @@ describe('useConstructor tests ->', () => {
     return <h1>{title}</h1>;
   };
 
+  const TestComponentWithValue: React.FC<TestComponentProps> = ({ text }) => {
+    const title = useConstructor<string>(() => {
+      return text;
+    });
+    return <h1>{title!}</h1>;
+  };
+
   it('Should render component already changed and not change value from next renders', () => {
     const { rerender } = render(<TestComponent text="test" />);
     const firstRender = screen.queryByText('test');
@@ -32,6 +39,22 @@ describe('useConstructor tests ->', () => {
     rerender(<TestComponent text="test 3" />);
     const thirdRender = screen.queryByText('test 3');
     expect(thirdRender).not.toBeInTheDocument();
+  });
+
+  it('Should return a value if callback has a defined return', () => {
+    render(<TestComponentWithValue text="test" />);
+    const firstRender = screen.queryByText('test');
+    expect(firstRender).toBeInTheDocument();
+  });
+
+  it("Shouldn't change value after first render", () => {
+    const { rerender } = render(<TestComponentWithValue text="test" />);
+    const firstRender = screen.queryByText('test');
+    expect(firstRender).toBeInTheDocument();
+
+    rerender(<TestComponentWithValue text="test 2" />);
+    const secondRender = screen.queryByText('test 2');
+    expect(secondRender).not.toBeInTheDocument();
   });
 });
 

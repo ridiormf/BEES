@@ -6,17 +6,20 @@ export interface User {
 }
 
 export interface ApplicationState {
-  user?: User;
+  showFullLoading: boolean;
 }
 
-export interface ApplicationMethods {
+export interface ApplicationContext {
+  user?: User;
   saveUser?: (user: User) => void;
   clearUser?: () => void;
+  openFullLoading?: () => void;
+  closeFullLoading?: () => void;
 }
 
 export interface ApplicationProviderControl {
   state: ApplicationState;
-  methods: ApplicationMethods;
+  context: ApplicationContext;
 }
 
 export interface ApplicationProviderProps {

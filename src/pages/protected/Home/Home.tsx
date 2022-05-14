@@ -4,11 +4,13 @@ import { useHomeControl } from './Home-control';
 import { homeStyles } from './Home-styles';
 import { HomeProps } from './Home-types';
 
-const {} = homeStyles;
+const {
+  styled: { Container },
+} = homeStyles;
 
 const Home: React.FC<HomeProps> = () => {
   const {} = useHomeControl();
-  return <h1>Home</h1>;
+  return <Container>Home</Container>;
 };
 
 export default Home;

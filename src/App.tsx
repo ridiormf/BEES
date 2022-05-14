@@ -21,9 +21,7 @@ const ProtectedRoutes: React.FC = () => {
 };
 
 const App: React.FC = () => {
-  const {
-    state: { user },
-  } = useApplicationContext();
+  const { user } = useApplicationContext();
 
   console.log({ user });
   return user ? <ProtectedRoutes /> : <PublicRoutes />;

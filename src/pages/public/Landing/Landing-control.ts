@@ -22,18 +22,19 @@ export const useLandingControl = () => {
   const onChangeMajority = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    setValidForm(event.target.checked && checkFullName(fullName));
+    setValidForm(event.target.checked && checkFullName(fullName.trim()));
     setMajority(event.target.checked);
   };
 
   const onBlurFullName = () => {
-    setValidForm(majority && checkFullName(fullName));
+    setValidForm(majority && checkFullName(fullName.trim()));
   };
 
   const onSaveForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    applicationContext.methods.saveUser!({
-      fullName,
+    applicationContext.openFullLoading!();
+    applicationContext.saveUser!({
+      fullName: fullName.trim(),
       majority,
     });
   };

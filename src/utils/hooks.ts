@@ -6,12 +6,17 @@ import React from 'react';
  *
  * @param {function} callback Callback which will be called as soon as the component is instantiated.
  */
-export const useConstructor = (callback: () => void): void => {
+export const useConstructor = <ValueType = void>(
+  callback: () => ValueType,
+): ValueType | void => {
   const componentWasBuilt = React.useRef<boolean>(false);
+  const value = React.useRef<ValueType>();
   if (!componentWasBuilt.current) {
     componentWasBuilt.current = true;
-    callback();
+    value.current = callback();
   }
+
+  return value.current;
 };
 
 /**

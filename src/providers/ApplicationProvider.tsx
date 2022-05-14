@@ -1,5 +1,6 @@
+import FullLoading from '../components/FullLoading/FullLoading';
 import {
-  ApplicationContext,
+  applicationContext,
   useApplicationProviderControl,
 } from './ApplicationProvider-control';
 import { ApplicationProviderProps } from './ApplicationProvider-types';
@@ -7,11 +8,15 @@ import { ApplicationProviderProps } from './ApplicationProvider-types';
 const ApplicationProvider: React.FC<ApplicationProviderProps> = ({
   children,
 }) => {
-  const control = useApplicationProviderControl();
+  const {
+    state: { showFullLoading },
+    context,
+  } = useApplicationProviderControl();
   return (
-    <ApplicationContext.Provider value={control}>
+    <applicationContext.Provider value={context}>
       {children}
-    </ApplicationContext.Provider>
+      <FullLoading visible={showFullLoading} />
+    </applicationContext.Provider>
   );
 };
 
