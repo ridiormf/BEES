@@ -1,10 +1,9 @@
-import { useApplicationContext } from '../../../providers';
-import { useConstructor } from '../../../utils/hooks';
+import { useApplicationContext } from '../../../providers/ApplicationProvider';
+import { useDidMount } from '../../../utils/hooks';
 
 export const useHomeControl = () => {
-  const applicationContext = useApplicationContext();
-  useConstructor(() => {
-    applicationContext.closeFullLoading!();
+  const { closeFullLoading } = useApplicationContext();
+  useDidMount(() => {
+    closeFullLoading!();
   });
-  return {};
 };

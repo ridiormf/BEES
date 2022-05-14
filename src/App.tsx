@@ -1,29 +1,11 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Landing } from './pages/public/Landing';
-import { Home } from './pages/protected/Home';
-import { useApplicationContext } from './providers';
-
-const PublicRoutes: React.FC = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-    </Routes>
-  );
-};
-
-const ProtectedRoutes: React.FC = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  );
-};
+import ProtectedRoutes from './navigation/ProtectedRoutes';
+import PublicRoutes from './navigation/PublicRoutes';
+import { useApplicationContext } from './providers/ApplicationProvider';
 
 const App: React.FC = () => {
   const { user } = useApplicationContext();
 
-  console.log({ user });
   return user ? <ProtectedRoutes /> : <PublicRoutes />;
 };
 

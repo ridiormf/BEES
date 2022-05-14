@@ -13,13 +13,13 @@ const opacityDown = keyframes({
 });
 
 const Container = theme.styled('div', {
-  width: '100vw',
-  height: '100vh',
+  width: '100%',
+  height: '100%',
   backgroundColor: '$primaryBackground',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  position: 'absolute',
+  position: 'fixed',
   transition: '500ms',
   '&.show': {
     animation: `${opacityUp} 500ms forwards`,
@@ -38,11 +38,11 @@ const scaleUp = keyframes({
 const imageCSS: CSS = {
   width: '10%',
   animation: `${scaleUp} 2000ms infinite`,
-  '@lg': {
+  '@lgDown': {
     width: '20%',
   },
 
-  '@sm': {
+  '@smDown': {
     width: '40%',
   },
 };

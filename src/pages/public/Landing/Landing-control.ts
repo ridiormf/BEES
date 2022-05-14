@@ -1,5 +1,5 @@
 import React from 'react';
-import { useApplicationContext } from '../../../providers';
+import { useApplicationContext } from '../../../providers/ApplicationProvider';
 import { checkFullName } from '../../../utils/validations';
 
 export const useLandingControl = () => {

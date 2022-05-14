@@ -19,6 +19,10 @@ const FormContainer = theme.styled('form', {
   zIndex: 1,
 });
 
+const secondTextCSS: CSS = {
+  marginVertical: 16,
+};
+
 const textFieldCSS: CSS = {
   marginTop: 6,
   marginBottom: 16,
@@ -39,7 +43,7 @@ const imageCSS: CSS = {
   left: 28,
   bottom: 16,
   maxWidth: '100%',
-  '@sm': {
+  '@smDown': {
     left: '50%',
     transform: 'translateX(-50%)',
     width: '40%',
@@ -52,6 +56,7 @@ export const landingStyles = {
     FormContainer,
   },
   css: {
+    secondText: secondTextCSS,
     textField: textFieldCSS,
     checkbox: checkboxCSS,
     button: buttonCSS,

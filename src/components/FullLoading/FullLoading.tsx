@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { fullLoadingStyles } from './FullLoading-styles';
 import { FullLoadingProps } from './FullLoading-types';
 
-import { Image } from '../Image';
+import Image from '../Image';
 
 import BeesImage from '../../assets/png/bees.png';
 import { useFullLoadingControl } from './FullLoading-control';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useConstructor } from '../utils/hooks';
+import { useConstructor } from '../../utils/hooks';
 import { APPLICATION_PROVIDER } from './ApplicationProvider-consts';
 import {
   ApplicationContext,
@@ -32,6 +32,7 @@ export const useApplicationProviderControl = (): ApplicationProviderControl => {
   };
 
   const clearUser = () => {
+    localStorage.removeItem(APPLICATION_PROVIDER.STORAGE_KEYS.USER);
     setUser(undefined);
   };
 

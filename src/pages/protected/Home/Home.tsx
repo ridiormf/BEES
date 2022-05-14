@@ -1,16 +1,17 @@
 import React from 'react';
+import PageTemplate from '../../../components/PageTemplate/PageTemplate';
+import Breweries from '../../../features/Breweries';
 
 import { useHomeControl } from './Home-control';
-import { homeStyles } from './Home-styles';
 import { HomeProps } from './Home-types';
 
-const {
-  styled: { Container },
-} = homeStyles;
-
 const Home: React.FC<HomeProps> = () => {
-  const {} = useHomeControl();
-  return <Container>Home</Container>;
+  useHomeControl();
+  return (
+    <PageTemplate>
+      <Breweries />
+    </PageTemplate>
+  );
 };
 
 export default Home;

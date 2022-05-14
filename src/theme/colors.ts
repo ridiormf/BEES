@@ -6,8 +6,8 @@ const colors = {
   primaryText: '#000000',
   primaryInputBorder: '#D4D4D8',
   primaryInputBackground: '#FFFFFF',
-  secondaryBackground: '#FFFFFF',
-  secondaryCard: '#E5E5E5',
+  secondaryBackground: '#FFFEF0',
+  secondaryCard: '#FFFFFF',
   secondaryTitle: '#27272A',
   secondaryText: '#3F3F46',
 };

@@ -4,11 +4,11 @@ import { useLandingControl } from './Landing-control';
 import { landingStyles } from './Landing-styles';
 import { LandingProps } from './Landing-types';
 
-import { Button } from '../../../components/Button';
-import { Checkbox } from '../../../components/Checkbox';
-import { Input } from '../../../components/Input';
-import { Text } from '../../../components/Text';
-import { Image } from '../../../components/Image';
+import Button from '../../../components/Button';
+import Checkbox from '../../../components/Checkbox';
+import Input from '../../../components/Input';
+import Text from '../../../components/Text';
+import Image from '../../../components/Image';
 
 import BeesImage from '../../../assets/png/bees.png';
 
@@ -26,7 +26,9 @@ const Landing: React.FC<LandingProps> = () => {
     <Container>
       <FormContainer onSubmit={onSaveForm}>
         <Text>Please, enter your full name below</Text>
-        <Text>Only alphabetical characters are accepted</Text>
+        <Text css={css.secondText}>
+          Only alphabetical characters are accepted
+        </Text>
         <Input
           onChange={onChangeFullName}
           value={fullName}
