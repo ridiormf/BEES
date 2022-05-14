@@ -1,22 +1,22 @@
 import { BulletProps } from '../Bullet/Bullet-types';
 
-export interface CardBulletProps extends BulletProps {
+export interface CardListBulletProps extends BulletProps {
   children: string;
 }
 
-export interface DataItem {
+export interface CardListDataItem {
   key: string | number;
   title: string | number;
   firstLineText: string | number;
   firstLineEmptyText: string | number;
   secondLineText: string | number;
   secondLineEmptyText: string | number;
-  onClose?: (item: DataItem, index: number) => void;
-  bullets?: Array<CardBulletProps>;
+  bullets?: Array<CardListBulletProps>;
 }
 
 export interface CardListProps {
-  data: Array<DataItem>;
+  data: Array<CardListDataItem>;
   bulletsWithAddMore?: boolean;
-  onSaveNewBullet?: (cardId: string, value: string) => void;
+  onSaveNewBullet?: (cardId: string | number, value: string) => void;
+  onDeleteCard?: (cardId: string | number, index?: number) => void;
 }

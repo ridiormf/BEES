@@ -4,10 +4,12 @@ import { CardListProps } from './CardList-types';
 export const useCardListControl = ({
   onSaveNewBullet,
 }: Partial<CardListProps>) => {
-  const [showBulletField, setShowBulletField] = React.useState<string>();
+  const [showBulletField, setShowBulletField] = React.useState<
+    string | number
+  >();
   const [fieldValue, setFieldValue] = React.useState<string>('');
 
-  const openBulletField = (cardId: string) => {
+  const openBulletField = (cardId: string | number) => {
     setFieldValue('');
     setShowBulletField(cardId);
   };

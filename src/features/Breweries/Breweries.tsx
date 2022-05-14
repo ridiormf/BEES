@@ -1,29 +1,29 @@
 import React from 'react';
-import { DataItem } from '../../components/CardList';
+import { CardListDataItem } from '../../components/CardList';
 import { useBreweriesControl } from './Breweries-control';
 
 import chartSvg from '../../assets/svg/chart-square-bar.svg';
 import pinSvg from '../../assets/svg/location-marker.svg';
 import phoneSvg from '../../assets/svg/phone.svg';
-import { BulletProps } from '../../components/Bullet/Bullet-types';
-import { CardBulletProps } from '../../components/CardList/CardList-types';
+import { CardListBulletProps } from '../../components/CardList/CardList-types';
 
 const CardList = React.lazy(() => import('../../components/CardList'));
 
 const Breweries = () => {
   const {
     state: { breweries },
-    methods: { onSaveNewBullet },
+    methods: { onSaveNewBullet, onDeleteBrewery },
   } = useBreweriesControl();
 
   return (
     <CardList
       bulletsWithAddMore
       onSaveNewBullet={onSaveNewBullet}
+      onDeleteCard={onDeleteBrewery}
       data={
         breweries
-          ? breweries.map((brewery): DataItem => {
-              const bullets: Array<CardBulletProps> = [];
+          ? breweries.map((brewery): CardListDataItem => {
+              const bullets: Array<CardListBulletProps> = [];
               if (brewery.brewery_type) {
                 bullets.push({
                   icon: chartSvg,
@@ -59,7 +59,6 @@ const Breweries = () => {
                     ? `${brewery.city}, ${brewery.state} - ${brewery.country}`
                     : '',
                 secondLineEmptyText: 'Location not registered or incomplete',
-                onClose: () => {},
                 bullets,
               };
             })

@@ -22,7 +22,7 @@ const ApplicationProvider: React.FC<ApplicationProviderProps> = ({
   return (
     <applicationContext.Provider value={context}>
       <RenderChildrenWithMemo>{children}</RenderChildrenWithMemo>
-      <FullLoading visible={false} />
+      <FullLoading visible={showFullLoading} />
     </applicationContext.Provider>
   );
 };

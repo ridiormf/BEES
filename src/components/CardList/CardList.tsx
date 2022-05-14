@@ -1,6 +1,6 @@
 import React from 'react';
 import { cardListStyles } from './CardList-styles';
-import { CardListProps, DataItem } from './CardList-types';
+import { CardListProps, CardListDataItem } from './CardList-types';
 import { useCardListControl } from './CardList-control';
 
 import Image from '../Image';
@@ -26,6 +26,7 @@ const CardList: React.FC<CardListProps> = ({
   data,
   bulletsWithAddMore,
   onSaveNewBullet,
+  onDeleteCard,
 }) => {
   const {
     state: { showBulletField, fieldValue },
@@ -34,11 +35,13 @@ const CardList: React.FC<CardListProps> = ({
 
   return (
     <CardsContainer>
-      {data.map((item: DataItem) => (
+      {data.map((item: CardListDataItem, index: number) => (
         <Card key={item.key}>
-          <CloseButton>
-            <Image src={garbageSvg} />
-          </CloseButton>
+          {onDeleteCard ? (
+            <CloseButton onClick={() => onDeleteCard(item.key, index)}>
+              <Image src={garbageSvg} />
+            </CloseButton>
+          ) : null}
           <Title>{item.title}</Title>
           <Text css={item.firstLineText ? undefined : css.TextEmpty}>
             {item.firstLineText ? item.firstLineText : item.firstLineEmptyText}
@@ -60,12 +63,12 @@ const CardList: React.FC<CardListProps> = ({
                   onKeyUp={(e) => e.preventDefault()}
                   icon={addMoreSvg}
                   onClick={
-                    showBulletField === `${item.key}`
+                    showBulletField === item.key
                       ? saveNewBullet
-                      : () => openBulletField(`${item.key}`)
+                      : () => openBulletField(item.key)
                   }
                 >
-                  {showBulletField === `${item.key}` ? (
+                  {showBulletField === item.key ? (
                     <Input
                       autoFocus
                       onKeyUp={onFieldKeyUp}
