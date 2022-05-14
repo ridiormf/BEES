@@ -1,3 +1,4 @@
+import { CSS } from '@stitches/react';
 import theme from '../../theme';
 
 const Container = theme.styled('div', {
@@ -40,6 +41,9 @@ const HeaderTitles = theme.styled('h2', {
   fontWeight: 400,
   marginLeft: 16,
   textTransform: 'capitalize',
+  '@smDown': {
+    fontSize: 20,
+  },
 });
 
 const ContentContainer = theme.styled('div', {
@@ -47,7 +51,15 @@ const ContentContainer = theme.styled('div', {
   display: 'flex',
   flexDirection: 'column',
   flexGrow: 1,
+  '@lgDown': {
+    padding: 40,
+  },
+  '@smDown': {
+    padding: 20,
+  },
 });
+
+const backImageCSS: CSS = {};
 
 export const pageTemplateStyles = {
   styled: {
@@ -56,5 +68,8 @@ export const pageTemplateStyles = {
     BackButton,
     HeaderTitles,
     ContentContainer,
+  },
+  css: {
+    backImage: backImageCSS,
   },
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 /**
  * Function that simulates the behavior of a class component constructor,
@@ -61,4 +62,23 @@ export const useDidUpdate = (
       callback();
     }
   }, deps);
+};
+
+export const useAppNavigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const go = (path: string) => {
+    navigate(path);
+  };
+
+  return {
+    goBack,
+    go,
+    pathname: location.pathname,
+  };
 };

@@ -19,11 +19,6 @@ const CardsContainer = theme.styled('div', {
   '@xlUp': {
     gridTemplateColumns: 'repeat(3, 1fr)',
   },
-  '@mdDown': {},
-  // flexDirection: 'row',
-  // flexWrap: 'wrap',
-  // alignItems: 'center',
-  // justifyContent: 'space-around',
 });
 
 const Card = theme.styled('div', {

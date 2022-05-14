@@ -9,23 +9,24 @@ import Image from '../Image';
 
 const {
   styled: { Container, Header, BackButton, HeaderTitles, ContentContainer },
+  css,
 } = pageTemplateStyles;
 
-const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
+const PageTemplate: React.FC<PageTemplateProps> = ({ children, ...rest }) => {
   const {
     state: { fullName },
-    methods: { logout },
+    methods: { onGoBackClick },
   } = usePageTemplateControl();
   return (
     <Container>
       <Header>
-        <BackButton onClick={logout}>
-          <Image src={backButtonSvg} />
+        <BackButton onClick={onGoBackClick}>
+          <Image src={backButtonSvg} css={css.backImage} />
           <HeaderTitles>Go Back</HeaderTitles>
         </BackButton>
         <HeaderTitles>{fullName}</HeaderTitles>
       </Header>
-      <ContentContainer>{children}</ContentContainer>
+      <ContentContainer {...rest}>{children}</ContentContainer>
     </Container>
   );
 };
