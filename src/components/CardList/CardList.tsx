@@ -8,6 +8,7 @@ import Bullet from '../Bullet';
 
 import garbageSvg from '../../assets/svg/trash.svg';
 import addMoreSvg from '../../assets/svg/plus-circle.svg';
+import addConfirmSvg from '../../assets/svg/check-circle.svg';
 
 const {
   styled: {
@@ -61,7 +62,9 @@ const CardList: React.FC<CardListProps> = ({
               {bulletsWithAddMore ? (
                 <Bullet
                   onKeyUp={(e) => e.preventDefault()}
-                  icon={addMoreSvg}
+                  icon={
+                    showBulletField === item.key ? addConfirmSvg : addMoreSvg
+                  }
                   onClick={
                     showBulletField === item.key
                       ? saveNewBullet
