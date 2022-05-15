@@ -18,13 +18,8 @@ export const useBreweriesProviderControl = (): BreweriesProviderControl => {
   const setOrUpdateBreweries = (breweryList: Array<Brewery>) => {
     setBreweries(breweryList);
   };
-  // const _breweries = breweriesResources?.read().data;
-  // if (_breweries?.length && _breweries !== breweries) {
-  //   setBreweries(_breweries);
-  // }
 
   const getBreweries = async (): Promise<void> => {
-    console.log('entrou aqui');
     setBreweriesResources(getBreweriesList());
   };
 

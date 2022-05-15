@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components -> Bullet -> snapshots -> Should match snapshot 1`] = `
+<div>
+  <button
+    class="c-bETMrI"
+    disabled=""
+  >
+    <p
+      class="c-caxBfD c-ljOCux"
+    />
+  </button>
+</div>
+`;

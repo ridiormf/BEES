@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components -> Breweries -> snapshots -> Should match snapshot 1`] = `
+<div>
+  <div
+    class="c-fgfIsx"
+  >
+    <h2
+      class="c-biZjsf"
+    >
+      No brewery to show
+    </h2>
+    <button
+      class="c-eJdPgB"
+    >
+      <img
+        alt="Bee image"
+        class="PJLV PJLV-ijfrJSw-css"
+        src="bees.png"
+      />
+    </button>
+    <h2
+      class="c-biZjsf"
+    >
+      Tap the BEE to query again.
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`features -> Breweries -> snapshots -> Should match snapshot 1`] = `
+<div>
+  <div
+    class="c-fgfIsx"
+  >
+    <h2
+      class="c-biZjsf"
+    >
+      No brewery to show
+    </h2>
+    <button
+      class="c-eJdPgB"
+    >
+      <img
+        alt="Bee image"
+        class="PJLV PJLV-ijfrJSw-css"
+        src="bees.png"
+      />
+    </button>
+    <h2
+      class="c-biZjsf"
+    >
+      Tap the BEE to query again.
+    </h2>
+  </div>
+</div>
+`;

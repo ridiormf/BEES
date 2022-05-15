@@ -55,7 +55,11 @@ const CardList: React.FC<CardListProps> = ({
           {item.bullets ? (
             <BulletsContainer>
               {item.bullets.map((bullet) => (
-                <Bullet icon={bullet.icon} key={bullet.children}>
+                <Bullet
+                  icon={bullet.icon}
+                  imageAlt={bullet.imageAlt}
+                  key={bullet.children}
+                >
                   {bullet.children}
                 </Bullet>
               ))}
@@ -64,6 +68,11 @@ const CardList: React.FC<CardListProps> = ({
                   onKeyUp={(e) => e.preventDefault()}
                   icon={
                     showBulletField === item.key ? addConfirmSvg : addMoreSvg
+                  }
+                  imageAlt={
+                    showBulletField === item.key
+                      ? 'add confirm icon'
+                      : 'add more icon'
                   }
                   onClick={
                     showBulletField === item.key

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components -> SuspenseFallback -> snapshots -> Should match snapshot 1`] = `
+<div>
+  <div
+    class="c-dbppsk c-dbppsk-dnqaOS-color-primary"
+  >
+    <h1
+      class="c-iYvCva"
+    >
+      Carregando...
+    </h1>
+  </div>
+</div>
+`;

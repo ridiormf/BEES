@@ -34,18 +34,21 @@ const Breweries = () => {
         if (brewery.brewery_type) {
           bullets.push({
             icon: chartSvg,
+            imageAlt: 'chard icon',
             children: brewery.brewery_type,
           });
         }
         if (brewery.postal_code) {
           bullets.push({
             icon: pinSvg,
+            imageAlt: 'pin icon',
             children: brewery.postal_code,
           });
         }
         if (brewery.phone) {
           bullets.push({
             icon: phoneSvg,
+            imageAlt: 'phone icon',
             children: brewery.phone,
           });
         }

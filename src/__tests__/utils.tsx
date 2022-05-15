@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { ApplicationProvider } from '../providers/ApplicationProvider';
 import { BreweriesProvider } from '../providers/BreweriesProvider';
 
@@ -15,7 +16,9 @@ interface ProvidersProps {
 const Wrapper: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <ApplicationProvider>
-      <BreweriesProvider>{children}</BreweriesProvider>
+      <BreweriesProvider>
+        <BrowserRouter>{children}</BrowserRouter>
+      </BreweriesProvider>
     </ApplicationProvider>
   );
 };

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components -> PageTemplate -> snapshots -> Should match snapshot 1`] = `
+<div>
+  <div
+    class="c-jAbhDY"
+  >
+    <header
+      class="c-jveizM"
+    >
+      <button
+        class="c-dWdZEg"
+      >
+        <img
+          alt="go back icon"
+          class="PJLV PJLV-iPJLV-css"
+          src="arrow-circle-left.svg"
+        />
+        <h2
+          class="c-kWbkwW"
+        >
+          Go Back
+        </h2>
+      </button>
+      <h2
+        class="c-kWbkwW"
+      />
+    </header>
+    <div
+      class="c-bmCckb"
+    />
+  </div>
+</div>
+`;
