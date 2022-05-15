@@ -41,4 +41,16 @@ describe('checkFullName tests ->', () => {
     let result = checkFullName('Full Name Test ');
     expect(result).toBe(false);
   });
+
+  it('Should return "false" if nothing was passed', () => {
+    let result = checkFullName();
+    expect(result).toBe(false);
+    result = checkFullName('');
+    expect(result).toBe(false);
+  });
+
+  it('Should return "false" if only one name was passed', () => {
+    let result = checkFullName('teste');
+    expect(result).toBe(false);
+  });
 });

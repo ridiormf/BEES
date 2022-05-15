@@ -64,6 +64,14 @@ export const useDidUpdate = (
   }, deps);
 };
 
+/**
+ * Function that use main hooks from "react-router-dom" to simplify usability.
+ *
+ * @returns {object} containing following attributes:
+ * @type {function} "goBack": to return navigation one page.
+ * @type {function} "go": to navigate for path.
+ * @type {string} "pathname": current url pathname.
+ */
 export const useAppNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();

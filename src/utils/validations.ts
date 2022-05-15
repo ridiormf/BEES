@@ -10,10 +10,10 @@
  * @returns {boolean} Return true if is a valid name, otherwise returns false.
  */
 export const checkFullName = (fullName?: string): boolean => {
-  const splittedNames = fullName?.split(' ');
-  if (!splittedNames) {
-    return false;
-  }
+  if (!fullName) return false;
+
+  const splittedNames = fullName.split(' ');
+
   return (
     splittedNames.length > 1 &&
     splittedNames.every((name) => name.length > 1 && !/\d/g.test(name))

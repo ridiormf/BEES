@@ -1,11 +1,26 @@
-import { render, screen } from '@testing-library/react';
 import React from 'react';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+
 import {
   useConstructor,
   useDidMount,
   useDidUpdate,
   useWillUnmount,
+  useAppNavigation,
 } from '../hooks';
+
+const PATHNAME = '/test-pathname';
+const PREV_PATHNAME = '/prev-pathname';
+let currentPath: string = PATHNAME;
+
+jest.mock('react-router-dom', () => ({
+  ...(jest.requireActual('react-router-dom') as any),
+  useNavigate: () => (path: string | number) => {
+    currentPath = typeof path === 'string' ? path : PREV_PATHNAME;
+  },
+  useLocation: () => ({ pathname: PATHNAME }),
+}));
 
 interface TestComponentProps {
   text: string;
@@ -120,5 +135,37 @@ describe('useWillUnmount tests ->', () => {
     expect(mockFunction).not.toBeCalled();
     unmount();
     expect(mockFunction).toBeCalledTimes(1);
+  });
+});
+
+describe('useAppNavigation tests ->', () => {
+  let pathnameResult: string;
+  let goBackResult: () => void;
+  let goResult: (path: string) => void;
+
+  const TestComponent: React.FC = () => {
+    const { pathname, goBack, go } = useAppNavigation();
+    pathnameResult = pathname;
+    goBackResult = goBack;
+    goResult = go;
+    return <></>;
+  };
+
+  it('Should return current location pathname', () => {
+    render(<TestComponent />);
+    expect(pathnameResult).toBe(PATHNAME);
+  });
+
+  it('Should return function that changes current url', () => {
+    const newPath = '/new-path';
+    render(<TestComponent />);
+    goResult(newPath);
+    expect(currentPath).toBe(newPath);
+  });
+
+  it('Should return function that changes current url to previous one', () => {
+    render(<TestComponent />);
+    goBackResult();
+    expect(currentPath).toBe(PREV_PATHNAME);
   });
 });
