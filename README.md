@@ -22,25 +22,25 @@ To test this project you can use `cypress` or `@testing-library/react`, with the
 
 The distribution of folders and files was designed as follows:
 
-|---- **src**
-|----|---- \***\*tests\*\*** -> Test utils for `@testing-library/react`
-|----|---- **api** -> `apisauce` FetchApi calls and definitions
-|----|---- **assets** -> Application assets (images and icons)
-|----|----|---- **png** -> Image assets
-|----|----|---- **svg** -> Svg assets (icons)
-|----|---- **components** -> Atomic components to use.
-|----|----|---- **_Component Folder_**
-|----|---- **features** -> Components that can be reused with more specific business features
-|----|----|---- **_Feature folder_**
-|----|---- **navigation** -> Routes for `react-router-dom`
-|----|----|---- **public** -> Public routes that user **don't** need to be logged.
-|----|----|---- **protected** -> Protected routes that user need to be logged.
-|----|---- **pages** -> Application pages, like `Landing`, `Home` or `404`)
-|----|----|---- **_Page Folder_**
-|----|---- **providers** -> React contexts with creation of providers, hooks and logics.
-|----|----|---- **_Provider Folder_**
-|----|---- **theme** -> Theme creation for styling with `@stitches/react
-|----|---- **utils** -> Applications generic logic utils.
+- **src**
+- - \***\*tests\*\*** -> Test utils for `@testing-library/react`
+- - **api** -> `apisauce` FetchApi calls and definitions
+- - **assets** -> Application assets (images and icons)
+- - - **png** -> Image assets
+- - - **svg** -> Svg assets (icons)
+- - **components** -> Atomic components to use.
+- - - **_Component Folder_**
+- - **features** -> Components that can be reused with more specific business features
+- - - **_Feature folder_**
+- - **navigation** -> Routes for `react-router-dom`
+- - - **public** -> Public routes that user **don't** need to be logged.
+- - - **protected** -> Protected routes that user need to be logged.
+- - **pages** -> Application pages, like `Landing`, `Home` or `404`)
+- - - **_Page Folder_**
+- - **providers** -> React contexts with creation of providers, hooks and logics.
+- - - **_Provider Folder_**
+- - **theme** -> Theme creation for styling with `@stitches/react
+- - **utils** -> Applications generic logic utils.
 
 _Obs: Inside some of these folders there is a **tests** folder, for the centralization of test files for the `@testing-library/react`_
 
