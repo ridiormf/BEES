@@ -27,6 +27,9 @@ const textFieldCSS: CSS = {
   marginTop: 6,
   marginBottom: 16,
   textTransform: 'capitalize',
+  '&::placeholder': {
+    textTransform: 'none',
+  },
 };
 
 const checkboxCSS: CSS = {

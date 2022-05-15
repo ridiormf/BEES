@@ -74,7 +74,7 @@ const Breweries = () => {
     <ErrorContainer>
       <ErrorTitle>No brewery to show</ErrorTitle>
       <ImageButton onClick={tryQueryAgain}>
-        <Image src={beesLogo} css={css.image} />
+        <Image src={beesLogo} css={css.image} alt="Bee image" />
       </ImageButton>
       <ErrorTitle>Tap the BEE to query again.</ErrorTitle>
     </ErrorContainer>

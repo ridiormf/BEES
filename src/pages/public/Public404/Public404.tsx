@@ -21,14 +21,14 @@ const Public404: React.FC<Public404Props> = () => {
   } = usePublic404Control();
   return (
     <Container>
-      <Image src={BeesImage} css={css.image} />
+      <Image src={BeesImage} css={css.image} alt="Bee image" />
       <Title>Oops, be careful not to get stung!</Title>
 
       <Text css={css.text}>
         Return to a safe place by clicking the button below. ;)
       </Text>
       <BackButton onClick={onGoBack}>
-        <Image src={backButtonSvg} />
+        <Image src={backButtonSvg} alt="go back image" />
         <ButtonLabel>Go Back</ButtonLabel>
       </BackButton>
     </Container>

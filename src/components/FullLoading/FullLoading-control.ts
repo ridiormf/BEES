@@ -8,10 +8,18 @@ import { FullLoadingProps } from './FullLoading-types';
 export const useFullLoadingControl = ({ visible }: FullLoadingProps) => {
   const initialContainerCSS = useConstructor<CSS>(() => {
     if (!visible) {
-      return { opacity: 0, zIndex: FULL_LOADING.VALUES.MIN_Z_INDEX };
+      return {
+        opacity: 0,
+        zIndex: FULL_LOADING.VALUES.MIN_Z_INDEX,
+        display: 'none',
+      };
     }
     getBody().style.overflowY = 'hidden';
-    return { opacity: 1, zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX };
+    return {
+      opacity: 1,
+      zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX,
+      display: 'flex',
+    };
   });
 
   const [containerCSS, setContainerCSS] = React.useState(initialContainerCSS);

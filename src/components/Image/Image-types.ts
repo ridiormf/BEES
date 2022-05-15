@@ -5,4 +5,6 @@ const {
   styled: { Image },
 } = imageStyles;
 
-export interface ImageProps extends React.ComponentProps<typeof Image> {}
+export interface ImageProps extends React.ComponentProps<typeof Image> {
+  alt: string;
+}

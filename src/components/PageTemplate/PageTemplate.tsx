@@ -21,7 +21,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ children, ...rest }) => {
     <Container>
       <Header>
         <BackButton onClick={onGoBackClick}>
-          <Image src={backButtonSvg} css={css.backImage} />
+          <Image src={backButtonSvg} css={css.backImage} alt="go back icon" />
           <HeaderTitles>Go Back</HeaderTitles>
         </BackButton>
         <HeaderTitles>{fullName}</HeaderTitles>

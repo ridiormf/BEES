@@ -11,12 +11,13 @@ const {
 const Bullet: React.FC<BulletProps> = ({
   children,
   icon,
+  imageAlt,
   onClick,
   ...rest
 }) => {
   return (
     <StyledBullet {...rest} onClick={onClick} disabled={!onClick}>
-      <Image src={icon} />
+      {icon && imageAlt ? <Image src={icon} alt={imageAlt} /> : undefined}
       <Text>{children}</Text>
     </StyledBullet>
   );

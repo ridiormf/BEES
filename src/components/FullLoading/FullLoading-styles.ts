@@ -2,14 +2,14 @@ import { CSS, keyframes } from '@stitches/react';
 import theme from '../../theme';
 import { FULL_LOADING } from './FullLoading-consts';
 
-const opacityUp = keyframes({
-  '0%': { zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX },
-  '100%': { zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX },
+const show = keyframes({
+  '0%': { zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX, display: 'flex' },
+  '100%': { zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX, display: 'flex' },
 });
 
-const opacityDown = keyframes({
-  '0%': { zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX },
-  '100%': { zIndex: FULL_LOADING.VALUES.MIN_Z_INDEX },
+const hide = keyframes({
+  '0%': { zIndex: FULL_LOADING.VALUES.MAX_Z_INDEX, display: 'flex' },
+  '100%': { zIndex: FULL_LOADING.VALUES.MIN_Z_INDEX, display: 'none' },
 });
 
 const Container = theme.styled('div', {
@@ -22,10 +22,10 @@ const Container = theme.styled('div', {
   position: 'fixed',
   transition: '500ms',
   '&.show': {
-    animation: `${opacityUp} 500ms forwards`,
+    animation: `${show} 500ms forwards`,
   },
   '&.hide': {
-    animation: `${opacityDown} 500ms forwards`,
+    animation: `${hide} 500ms forwards`,
   },
 });
 

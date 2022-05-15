@@ -9,4 +9,5 @@ export interface BulletProps
   extends Omit<React.ComponentProps<typeof Bullet>, 'onChange'> {
   children: React.ReactNode;
   icon?: string;
+  imageAlt?: string;
 }

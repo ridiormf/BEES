@@ -25,7 +25,7 @@ const Protected404: React.FC<Protected404Props> = () => {
         justifyContent: 'center',
       }}
     >
-      <Image src={BeesImage} css={css.image} />
+      <Image src={BeesImage} css={css.image} alt="Bee image" />
       <Title>Oops, be careful not to get stung!</Title>
 
       <Text css={css.text}>

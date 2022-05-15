@@ -9,5 +9,7 @@ export interface CheckboxProps
   extends Omit<React.ComponentProps<typeof Label>, 'children' | 'htmlFor'> {
   label: string;
   id: string;
-  inputProps?: Omit<React.ComponentProps<typeof Input>, 'type' | 'id'>;
+  inputProps?: Omit<React.ComponentProps<typeof Input>, 'type' | 'id'> & {
+    'data-cy'?: string;
+  };
 }

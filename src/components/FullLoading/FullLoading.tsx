@@ -21,7 +21,7 @@ const FullLoading: React.FC<FullLoadingProps> = ({ visible }) => {
   } = useFullLoadingControl({ visible });
   return createPortal(
     <Container css={containerCSS!} className={containerClassName}>
-      <Image src={BeesImage} css={css.image} />
+      <Image src={BeesImage} css={css.image} alt="Bee image" />
     </Container>,
     getBody(),
   );

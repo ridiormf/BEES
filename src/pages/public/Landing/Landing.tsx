@@ -24,31 +24,47 @@ const Landing: React.FC<LandingProps> = () => {
   } = useLandingControl();
   return (
     <Container>
-      <FormContainer onSubmit={onSaveForm}>
-        <Text>Please, enter your full name below</Text>
-        <Text css={css.secondText}>
+      <FormContainer data-cy="form" onSubmit={onSaveForm}>
+        <Text data-cy="formDescription">
+          Please, enter your full name below
+        </Text>
+        <Text data-cy="formHint" css={css.secondText}>
           Only alphabetical characters are accepted
         </Text>
         <Input
+          data-cy="inputText"
           onChange={onChangeFullName}
           value={fullName}
+          placeholder="Full name"
           onBlur={onBlurFullName}
           css={css.textField}
         />
         <Checkbox
+          data-cy="labelCheckbox"
           id="fullName"
           label="Are you older than 18 years old?"
           inputProps={{
             checked: majority,
             onChange: onChangeMajority,
+            'data-cy': 'inputCheckbox',
           }}
           css={css.checkbox}
         />
-        <Button css={css.button} disabled={!validForm} type="submit">
+        <Button
+          data-cy="submitButton"
+          css={css.button}
+          disabled={!validForm}
+          type="submit"
+        >
           Enter
         </Button>
       </FormContainer>
-      <Image src={BeesImage} css={css.image} />
+      <Image
+        data-cy="landingImage"
+        src={BeesImage}
+        css={css.image}
+        alt="Bee image"
+      />
     </Container>
   );
 };

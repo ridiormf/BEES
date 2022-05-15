@@ -40,7 +40,7 @@ const CardList: React.FC<CardListProps> = ({
         <Card key={item.key}>
           {onDeleteCard ? (
             <CloseButton onClick={() => onDeleteCard(item.key, index)}>
-              <Image src={garbageSvg} />
+              <Image src={garbageSvg} alt="trash icon" />
             </CloseButton>
           ) : null}
           <Title>{item.title}</Title>
