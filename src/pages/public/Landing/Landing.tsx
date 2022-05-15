@@ -11,6 +11,7 @@ import Text from '../../../components/Text';
 import Image from '../../../components/Image';
 
 import BeesImage from '../../../assets/png/bees.png';
+import { LANDING } from './Landing-consts';
 
 const {
   styled: { Container, FormContainer },
@@ -23,16 +24,16 @@ const Landing: React.FC<LandingProps> = () => {
     methods: { onChangeFullName, onBlurFullName, onChangeMajority, onSaveForm },
   } = useLandingControl();
   return (
-    <Container>
-      <FormContainer data-cy="form" onSubmit={onSaveForm}>
-        <Text data-cy="formDescription">
+    <Container data-testid={LANDING.TEST_ID.CONTAINER}>
+      <FormContainer data-testid={LANDING.TEST_ID.FORM} onSubmit={onSaveForm}>
+        <Text data-testid={LANDING.TEST_ID.FORM_DESCRIPTION}>
           Please, enter your full name below
         </Text>
-        <Text data-cy="formHint" css={css.secondText}>
+        <Text data-testid={LANDING.TEST_ID.FORM_HINT} css={css.secondText}>
           Only alphabetical characters are accepted
         </Text>
         <Input
-          data-cy="inputText"
+          data-testid={LANDING.TEST_ID.INPUT_TEXT}
           onChange={onChangeFullName}
           value={fullName}
           placeholder="Full name"
@@ -40,18 +41,18 @@ const Landing: React.FC<LandingProps> = () => {
           css={css.textField}
         />
         <Checkbox
-          data-cy="labelCheckbox"
+          data-testid={LANDING.TEST_ID.LABEL_CHECKBOX}
           id="fullName"
           label="Are you older than 18 years old?"
           inputProps={{
             checked: majority,
             onChange: onChangeMajority,
-            'data-cy': 'inputCheckbox',
+            'data-testid': LANDING.TEST_ID.INPUT_CHECKBOX,
           }}
           css={css.checkbox}
         />
         <Button
-          data-cy="submitButton"
+          data-testid={LANDING.TEST_ID.SUBMIT_BUTTON}
           css={css.button}
           disabled={!validForm}
           type="submit"
@@ -60,7 +61,7 @@ const Landing: React.FC<LandingProps> = () => {
         </Button>
       </FormContainer>
       <Image
-        data-cy="landingImage"
+        data-testid={LANDING.TEST_ID.LANDING_IMAGE}
         src={BeesImage}
         css={css.image}
         alt="Bee image"

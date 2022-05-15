@@ -10,6 +10,6 @@ export interface CheckboxProps
   label: string;
   id: string;
   inputProps?: Omit<React.ComponentProps<typeof Input>, 'type' | 'id'> & {
-    'data-cy'?: string;
+    'data-testid'?: string;
   };
 }

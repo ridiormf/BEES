@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages -> public -> Landing -> snapshots -> Should match snapshot 1`] = `
+<div>
+  <div
+    class="c-jjBNkD"
+    data-testid="LANDING_CONTAINER"
+  >
+    <form
+      class="c-jbNAsZ"
+      data-testid="LANDING_FORM"
+    >
+      <p
+        class="c-caxBfD"
+        data-testid="LANDING_FORM_DESCRIPTION"
+      >
+        Please, enter your full name below
+      </p>
+      <p
+        class="c-caxBfD c-caxBfD-ikujBtM-css"
+        data-testid="LANDING_FORM_HINT"
+      >
+        Only alphabetical characters are accepted
+      </p>
+      <input
+        class="c-jyoysL c-jyoysL-ihCWOuT-css"
+        data-testid="LANDING_INPUT_TEXT"
+        placeholder="Full name"
+        value=""
+      />
+      <label
+        class="c-dKuRBS c-dKuRBS-iiyfMXp-css"
+        data-testid="LANDING_LABEL_CHECKBOX"
+        for="fullName"
+      >
+        <input
+          class="c-inUAee"
+          data-testid="LANDING_INPUT_CHECKBOX"
+          id="fullName"
+          type="checkbox"
+        />
+         
+        Are you older than 18 years old?
+      </label>
+      <button
+        class="c-gHLNgH c-gHLNgH-ifjAMLC-css"
+        data-testid="LANDING_SUBMIT_BUTTON"
+        disabled=""
+        type="submit"
+      >
+        Enter
+      </button>
+    </form>
+    <img
+      alt="Bee image"
+      class="PJLV PJLV-ifuKsSQ-css"
+      data-testid="LANDING_LANDING_IMAGE"
+      src="bees.png"
+    />
+  </div>
+</div>
+`;
